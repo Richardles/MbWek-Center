@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>MbWekCenter</title>
+    
     <style>
         footer {
             position: fixed;
@@ -20,22 +22,41 @@
     
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container">
-            <a class="navbar-brand text-light" href="#">MbWekCenter</a>
+            <a class="navbar-brand text-light" href="{{ url('/') }}">MbWekCenter</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link text-light active" href="/">Home</a>
-                    <a class="nav-link text-light" href="#">Search Product</a>
-                    <a class="nav-link text-light" href="#">Login</a>
-                    <a class="nav-link text-light" href="#">Register</a>
+                    <a class="nav-link text-light active" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link text-light" href="/search-product">Search Product</a>
+                @guest
+                    @if (Route::has('login'))
+                    <a class="nav-link text-light" href="/login">Login</a>
+                    @endif
+                    
+                    @if (Route::has('register'))
+                    <a class="nav-link text-light" href="/register">Register</a>
+                    @endif
+                    
+                @else
+                    @if(auth()->user()->role_id == 1)
+                        <a class="nav-link" href="{{ route('insert-product') }}" style="color: white;">{{__('Insert Item')}}</a>
+                        <a class="nav-link" href="{{route('get-user')}}" style="color: white;">{{__('Manage User')}}</a>
+                    @endif
+
+                    @if(auth()->user()->role_id == 2)
+                        <a class="nav-link" href="/update-profile/{{auth()->user()->user_id}}" style="color: white;">{{__('Update Profile')}}</a>
+                        <a class="nav-link" href="/transaction-history" style="color: white;">{{__('Transaction')}}</a>
+                        <a class="nav-link" href="{{route('cart')}}" style="color: white;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    @endif
+                @endguest    
                 </div>
             </div>
         </div>
     </nav>
 
-    <div>
+    <div class="p-5">
         @yield('container')
     </div>
 
