@@ -19,7 +19,8 @@ class ProductController extends Controller
         return view('home', compact('products'));
     }
 
-    public function searchHome(){
+    public function searchHome()
+    {
         $products = Product::paginate(6);
         return view('searchproduct', compact('products'));
     }
@@ -54,7 +55,7 @@ class ProductController extends Controller
 
         $image = $request->file('image');
 
-        if($image){
+        if ($image) {
             $imageName = $image->getClientOriginalName();
             $image->move('Asset', $imageName);
         }
@@ -71,7 +72,6 @@ class ProductController extends Controller
         $product->save();
 
         return redirect('/home');
-
     }
 
     /**
@@ -87,18 +87,18 @@ class ProductController extends Controller
         return view('productdetail', compact('product'));
     }
 
-    public function search(){
+    public function search()
+    {
 
         $products = Product::where('category_id', '=', request()->get('category_id'))->paginate(6);
 
 
-        if(request()->has('search') && request()->get('search') != ""){
+        if (request()->has('search') && request()->get('search') != "") {
             $search = request()->get('search');
-            $products = Product::where([['title', 'like', '%'.$search.'%'],['category_id', '=', request()->get('category_id')]])->paginate(6);
+            $products = Product::where([['title', 'like', '%' . $search . '%'], ['category_id', '=', request()->get('category_id')]])->paginate(6);
         }
 
         return view('searchproduct', compact('products'));
-
     }
 
     /**
@@ -136,7 +136,7 @@ class ProductController extends Controller
 
         $image = $request->file('image');
 
-        if($image){
+        if ($image) {
             $imageName = $image->getClientOriginalName();
             $image->move('Asset', $imageName);
         }
@@ -155,18 +155,18 @@ class ProductController extends Controller
         return redirect('/home');
     }
 
-    public function updateQuantity($quantity, $item_id){
+    public function updateQuantity($quantity, $item_id)
+    {
 
         $product = Product::find($item_id);
 
         $product->stock -= $quantity;
 
-        if($product->stock == 0){
+        if ($product->stock == 0) {
             Product::destroy($item_id);
-        }else{
+        } else {
             $product->save();
         }
-
     }
 
     /**

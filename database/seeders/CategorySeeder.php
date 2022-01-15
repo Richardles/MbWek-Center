@@ -19,11 +19,19 @@ class CategorySeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
-            'category_name' => 'Product',
+            'category_name' => 'Animal Ware',
+        ]);
+
+        DB::table('categories')->insert([
+            'category_name' => 'Animal Products',
         ]);
         
         DB::table('categories')->insert([
-            'category_name' => 'Fodder',
+            'category_name' => 'Animal Feed',
+        ]);
+
+        DB::table('categories')->insert([
+            'category_name' => 'Animal Suplement',
         ]);
     }
 }

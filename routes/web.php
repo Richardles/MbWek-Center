@@ -65,4 +65,3 @@ Route::middleware(CheckUser::class)->group(function () {
     Route::get('/transaction-history', [PurchaseController::class, 'index']);
     Route::post('/transaction-detail/{transaction_header_id}', [PurchaseController::class, 'show'])->name('purchase-detail');
 });
-

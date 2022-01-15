@@ -16,75 +16,65 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->insert([
             'category_id' => 1,
-            'title' => 'Ayam Kampung',
-            'description' => 'Ayam kampung berkualitas yang dirawat dengan baik, siap potong.',
-            'price' => 80000,
-            'stock' => 1000,
-            'image' => 'ayam-kampung.jpg'
+            'title' => 'Low Grade Angora Goat',
+            'description' => 'Low Grade. Originated in Central Anatolia Region. Rich in fiber.',
+            'price' => 11000000,
+            'stock' => 137,
+            'image' => 'kambing-angora-low.jpg'
         ]);
+
         DB::table('products')->insert([
             'category_id' => 1,
-            'title' => 'Ayam Negeri',
-            'description' => 'Ayam negeri berkualitas yang dirawat dengan baik, bisa dikembang biakan kembali.',
-            'price' => 35000,
-            'stock' => 5000,
-            'image' => 'ayam-negeri.jpg'
+            'title' => 'High Grade Angora Goat',
+            'description' => 'Low Grade. Originated in Central Anatolia Region.',
+            'price' => 35000000,
+            'stock' => 9,
+            'image' => 'kambing-angora-high.jpg'
         ]);
+
         DB::table('products')->insert([
             'category_id' => 1,
-            'title' => 'Sapi Pedaging',
-            'description' => 'Sapi berkualitas yang berumur 4 - 6 tahun.',
-            'price' => 12000000,
+            'title' => 'Boer Goat',
+            'description' => 'Originated in South Africa. Rich in meat',
+            'price' => 1200000,
             'stock' => 150,
-            'image' => 'sapi.jpg'
+            'image' => 'kambing-boer.jpg'
         ]);
+
         DB::table('products')->insert([
-            'category_id' => 1,
-            'title' => 'Kambing',
-            'description' => 'Kambing berkualitas yang berumur 2 - 3 tahun.',
-            'price' => 3500000,
-            'stock' => 500,
-            'image' => 'kambing.jpg'
-        ]);
-        DB::table('products')->insert([
-            'category_id' => 2,
-            'title' => 'Susu Kambing',
-            'description' => 'Susu kambing segar tanpa diolah dan alami.',
-            'price' => 10000,
-            'stock' => 6000,
-            'image' => 'susu-kambing.jpg'
-        ]);
-        DB::table('products')->insert([
-            'category_id' => 2,
-            'title' => 'Telur Ayam Kampung',
-            'description' => 'Telur ayam kampung berkualitas',
-            'price' => 4000,
-            'stock' => 10000,
-            'image' => 'telur-ayam-kampung.jpg'
-        ]);
-        DB::table('products')->insert([
-            'category_id' => 2,
-            'title' => 'Telur Ayam Negeri',
-            'description' => 'Telur ayam negeri berkualitas',
-            'price' => 1750,
-            'stock' => 50000,
-            'image' => 'telur-ayam-negeri.jpg'
-        ]);
-        DB::table('products')->insert([
-            'category_id' => 3,
-            'title' => 'Makanan Kambing / Sapi',
-            'description' => 'Diambil dari tanaman rumput gajah yang alami dan disukai para ternak. ( Dijual per kg )',
+            'category_id' => 5,
+            'title' => 'Viterna',
+            'description' => 'High Quality Vitamin for 0 - 5 years old.',
             'price' => 45000,
-            'stock' => 3000,
-            'image' => 'rumput-gajah.jpg'
+            'stock' => 999,
+            'image' => 'vitamin.jpg'
         ]);
+
         DB::table('products')->insert([
-            'category_id' => 3,
-            'title' => 'Jagung Giling',
-            'description' => 'Diambil dari jagung pilihan yang dibudidaya sendiri dan alami. Siap Pakai. ( Dijual per kg )',
-            'price' => 8000,
-            'stock' => 10000,
-            'image' => 'jagung-giling.jpg'
+            'category_id' => 4,
+            'title' => 'Gedebog Pisang',
+            'description' => 'High Quality Fiber for animal fodder.',
+            'price' => 10000,
+            'stock' => 678,
+            'image' => 'gedebog-pisang.jpg'
+        ]);
+        
+        DB::table('products')->insert([
+            'category_id' => 4,
+            'title' => 'Mineral Fodder',
+            'description' => 'High Quality fodder for animal.',
+            'price' => 5000,
+            'stock' => 330,
+            'image' => 'mineral-kambing.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'category_id' => 4,
+            'title' => 'Indonesian \'rumput\'',
+            'description' => 'Basic goat fodder.',
+            'price' => 500,
+            'stock' => 9999,
+            'image' => 'rumput.jpg'
         ]);
     }
 }

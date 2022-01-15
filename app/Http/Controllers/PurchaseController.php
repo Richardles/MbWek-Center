@@ -45,7 +45,7 @@ class PurchaseController extends Controller
 
         $purchaseHeader->save();
 
-        $itemController = new ProductController();
+        $productController = new ProductController();
 
         $carts = Cart::where('user_id', '=', auth()->user()->user_id)->get();
 
@@ -53,12 +53,12 @@ class PurchaseController extends Controller
             $purchaseDetail = new PurchaseDetail();
 
             $purchaseDetail->purchase_header_id = $purchaseHeader->purchase_header_id;
-            $purchaseDetail->item_id = $cart->item_id;
+            $purchaseDetail->product_id = $cart->product_id;
             $purchaseDetail->quantity = $cart->quantity;
 
             $purchaseDetail->save();
 
-            $itemController->updateQuantity($cart->quantity, $cart->item_id);
+            $productController->updateQuantity($cart->quantity, $cart->product_id);
         }
 
         (new CartController)->destroyAllCart();
@@ -75,7 +75,7 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        $purchaseDetails = PurchaseDetail::where('purchase_header_id', '=', $id)->join('items', 'items.item_id', '=', 'purchase_details.purchase_header_id')->get();
+        $purchaseDetails = PurchaseDetail::where('purchase_header_id', '=', $id)->join('products', 'products.product_id', '=', 'purchase_details.purchase_header_id')->get();
 
         $total = 0;
 
